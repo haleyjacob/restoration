@@ -15,29 +15,46 @@ ui <- fluidPage(
     selectInput(inputId='x', label = h3('X-Axis'),
                 choices = c(
                     "Genotype",
-                    "NumPlanted"),
+                    #"NumPlanted"
+                    ),
                 selected = "Genotype"
                 
     ), 
     selectInput(inputId='y', label = h3('Y-Axis'),
                 choices = c(
+                    "NumPlanted",
                     "NumAliveMonth",
                     "NumAliveYear"),
                 selected = "NumAliveMonth"
                 
     ), 
-    plotOutput("scatter")
+    
+    
+    
+#    plotOutput("scatter")
+#)
+#
+#server <- function(input, output) {
+#    
+#    output$scatter <- renderPlot({
+#        ggplot(data = Sample_Data,aes_string(input$x,input$y, color = "Species")) +
+#            geom_point(alpha = input$alpha,
+#                       size=input$size)        
+#   })
+#
+#
+
+
+
+     plotOutput("barplot")
 )
 
 server <- function(input, output) {
-    
-    output$scatter <- renderPlot({
-        ggplot(data = Sample_Data,aes_string(input$x,input$y, color = "Species")) +
-            geom_point(alpha = input$alpha,
-                       size=input$size)
-        
-        
-    })
+  
+  output$barplot <- renderPlot({
+    ggplot(data = Sample_Data,aes_string(input$x,input$y, fill = "Species")) +
+      geom_bar(stat="identity")    
+  })
 }
 
 shinyApp(ui = ui, server = server)
