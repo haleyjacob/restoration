@@ -14,7 +14,7 @@ ui <- fluidPage(
     
     selectInput(inputId='x', label = h3('X-Axis'),
                 choices = c(
-                    "Genotype",
+                    "Genotype"
 #                   "NumPlanted"
                     ),
                 selected = "Genotype"
@@ -25,7 +25,7 @@ ui <- fluidPage(
                     "NumPlanted",
                     "NumAliveMonth",
                     "NumAliveYear"),
-                selected = "NumAliveMonth"
+                selected = "NumPlanted"
                 
     ), 
     
